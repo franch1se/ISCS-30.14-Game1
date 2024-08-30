@@ -7,6 +7,7 @@ extends Node2D
 var is_moving = false
 var on_ice = false
 var on_conv = false
+var walkable = true
 var current_dir = Vector2.UP
 
 # Called when the node enters the scene tree for the first time.
@@ -17,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	if is_moving == false:
 		return
 	if global_position != sprite.global_position:
-		sprite.global_position = sprite.global_position.move_toward(global_position, 0.7)
+		sprite.global_position = sprite.global_position.move_toward(global_position, 1)
 		return
 	is_moving = false
 	
@@ -45,8 +46,12 @@ func _process(delta: float) -> void:
 		animation.play("walk_right")
 	
 	if on_ice:
+		if walkable == false:
+			on_ice = false
 		move(current_dir)
 	if on_conv:
+		if walkable == false:
+			on_conv = false
 		move(current_dir)
 
 func move(dir: Vector2):
@@ -63,6 +68,10 @@ func move(dir: Vector2):
 	
 	var tile_data: TileData = tile_map.get_cell_tile_data(0, target)
 	if tile_data.get_custom_data("Walkable") == false:
+		walkable = false
+	else: 
+		walkable = true
+	if walkable == false:
 		return
 	
 	#Move
@@ -81,6 +90,10 @@ func move(dir: Vector2):
 			current_dir = Vector2.LEFT
 		elif tile_data.get_custom_data("conv_dir") == "RIGHT":
 			current_dir = Vector2.RIGHT
+	elif tile_data.get_custom_data("Walkable") == false:
+		on_conv = false
+		on_ice = false
+		return
 	else: 
 		on_conv = false
 		on_ice = false
