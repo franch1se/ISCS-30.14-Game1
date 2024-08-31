@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var tile_map = $"../Terrain"
-@onready var env_map = $"../Environment"
+@onready var tile_map = $"../Background"
+@onready var env_map = $"../Background"
 @onready var sprite = $"Sprite"
 @onready var animation = $"Sprite/animation"
 
@@ -67,9 +67,9 @@ func move(dir: Vector2):
 	)
 	print(current, target)
 	
-	var tile_data: TileData = tile_map.get_cell_tile_data(0, target)
-	if env_map.get_cell_tile_data(0, target) != null:
-		var env_tiledata: TileData = env_map.get_cell_tile_data(0, target)
+	var tile_data: TileData = tile_map.get_cell_tile_data(target)
+	if env_map.get_cell_tile_data(target) != null:
+		var env_tiledata: TileData = env_map.get_cell_tile_data(target)
 		print(env_tiledata.get_custom_data("Walkable"))
 		if env_tiledata.get_custom_data("Walkable") == false:
 			walkable = false
