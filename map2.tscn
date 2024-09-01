@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d1xhhi3chh1nu" path="res://assets/stardew assets/PC Computer - Stardew Valley - Cat Purple.png" id="7_2dvbl"]
 [ext_resource type="AudioStream" uid="uid://b652wvp3vo364" path="res://assets/stardew assets/01. Stardew Valley Overture.mp3" id="8_2hykr"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_34feq"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yy6f"]
 texture = ExtResource("1_fxmsn")
 0:0/0 = 0
 1:0/0 = 0
@@ -3191,7 +3191,7 @@ texture = ExtResource("1_fxmsn")
 5:88/animation_frame_5/duration = 0.5
 5:88/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jne8w"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o8r4n"]
 texture = ExtResource("2_a3whe")
 0:0/0 = 0
 1:0/0 = 0
@@ -6601,7 +6601,7 @@ texture = ExtResource("2_a3whe")
 33:103/0 = 0
 34:103/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4koje"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uudoi"]
 texture = ExtResource("3_aliht")
 0:0/animation_frame_0/duration = 1.0
 0:0/animation_frame_1/duration = 1.0
@@ -6637,11 +6637,11 @@ custom_data_layer_2/name = "Conveyor"
 custom_data_layer_2/type = 1
 custom_data_layer_3/name = "conv_dir"
 custom_data_layer_3/type = 4
-sources/0 = SubResource("TileSetAtlasSource_34feq")
-sources/1 = SubResource("TileSetAtlasSource_jne8w")
-sources/5 = SubResource("TileSetAtlasSource_4koje")
+sources/0 = SubResource("TileSetAtlasSource_0yy6f")
+sources/1 = SubResource("TileSetAtlasSource_o8r4n")
+sources/5 = SubResource("TileSetAtlasSource_uudoi")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wlty7"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xlh7h"]
 texture = ExtResource("1_fxmsn")
 0:0/0 = 0
 1:0/0 = 0
@@ -10193,7 +10193,7 @@ texture = ExtResource("1_fxmsn")
 39:39/0 = 0
 40:39/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ya6a"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hlkfv"]
 texture = ExtResource("2_a3whe")
 0:0/0 = 0
 1:0/0 = 0
@@ -13603,7 +13603,7 @@ texture = ExtResource("2_a3whe")
 33:103/0 = 0
 34:103/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_snsty"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fsjat"]
 texture = ExtResource("4_7kk1t")
 1:0/0 = 0
 2:0/0 = 0
@@ -13654,7 +13654,7 @@ texture = ExtResource("4_7kk1t")
 1:6/0 = 0
 1:7/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f6l5q"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xwuy"]
 texture = ExtResource("3_aliht")
 0:0/animation_frame_0/duration = 1.0
 0:0/animation_frame_1/duration = 1.0
@@ -13690,10 +13690,10 @@ custom_data_layer_2/name = "Conveyor"
 custom_data_layer_2/type = 1
 custom_data_layer_3/name = "conv_dir"
 custom_data_layer_3/type = 4
-sources/0 = SubResource("TileSetAtlasSource_wlty7")
-sources/1 = SubResource("TileSetAtlasSource_6ya6a")
-sources/5 = SubResource("TileSetAtlasSource_f6l5q")
-sources/2 = SubResource("TileSetAtlasSource_snsty")
+sources/0 = SubResource("TileSetAtlasSource_xlh7h")
+sources/1 = SubResource("TileSetAtlasSource_hlkfv")
+sources/5 = SubResource("TileSetAtlasSource_1xwuy")
+sources/2 = SubResource("TileSetAtlasSource_fsjat")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1muj"]
 atlas = ExtResource("5_xgobw")

@@ -31,6 +31,7 @@ func _physics_process(delta):
 	#print("From", sprite.global_position, "to", global_position)
 	cat_sprite.global_position = cat_sprite.global_position.move_toward(global_position, speed)
 
+# Manhattan distance
 func dist(cat: Vector2i, abi: Vector2i) -> int:
 	return abs(cat.x - abi.x) + abs(cat.y - abi.y)
 
@@ -73,7 +74,7 @@ func _process(delta):
 		target_coor += Vector2i.RIGHT
 		cat_sprite.play("walk_right")
 	
-	#Move
+	# Move
 	is_moving = true
 	global_position = tile_map.map_to_local(target_coor)
 	cat_sprite.global_position = tile_map.map_to_local(cat_coor)
