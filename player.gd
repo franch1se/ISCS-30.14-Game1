@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	if is_moving == false:
 		return
 	if global_position != sprite.global_position:
-		sprite.global_position = sprite.global_position.move_toward(global_position, 1)
+		sprite.global_position = sprite.global_position.move_toward(global_position, 10)
 		return
 	is_moving = false
 	
