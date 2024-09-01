@@ -5,10 +5,13 @@ extends CharacterBody2D
 @onready var conveyor_map: TileMapLayer = $"../Conveyor" # has conveyor
 @onready var environment_map: TileMapLayer = $"../Environment" # has null, walkable, impassable
 
+var NORMALSPEED = 1.5
+var HIGHSPEED = 2
+
 var is_moving = false
 var vertical_offset = Vector2(0, -16)
 var cur_direction = Vector2.DOWN
-var speed = 1.5;
+var speed = NORMALSPEED;
 var on_ice = false;
 var on_conveyor = false;
 var conv_direction = Vector2.DOWN;
@@ -80,6 +83,7 @@ func move(direction: Vector2):
 	if target_tile_type.get_custom_data("Ice"):
 		print("ON ICE")
 		on_ice = true
+		speed = HIGHSPEED
 	elif conv_target_tile_type != null and conv_target_tile_type.get_custom_data("Conveyor"):
 		print("ON CONVEYOR")
 		on_conveyor = true
@@ -91,10 +95,12 @@ func move(direction: Vector2):
 			direction = Vector2.LEFT
 		elif conv_target_tile_type.get_custom_data("conv_dir") == "RIGHT":
 			direction = Vector2.RIGHT
+		speed = HIGHSPEED
 	else:
 		print("not ice convey")
 		on_ice = false
 		on_conveyor = false
+		speed = NORMALSPEED
 		
 	#assert: no tile should be both ice or conveyor
 	if on_ice or on_conveyor:

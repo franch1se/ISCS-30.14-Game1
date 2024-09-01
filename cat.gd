@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var tile_map: TileMapLayer = $"../Background"
+@onready var environment_map: TileMapLayer = $"../Environment" # has null, walkable, impassable
 @onready var abigail_sprite: AnimatedSprite2D = $"../Abigail/abigail_sprite"
 @onready var cat_sprite: AnimatedSprite2D = $cat_sprite
 
@@ -9,7 +10,7 @@ var speed = 1
 # WASD
 var dx = [0, -1, 0, 1]
 var dy = [-1, 0, 1, 0]
-
+var MXVAL = 1000000000
 var dist_threshold = 1;
 
 func _ready():
@@ -40,14 +41,21 @@ func _process(delta):
 	var cat_coor = tile_map.local_to_map(cat_sprite.global_position)
 	var abigail_coor = tile_map.local_to_map(abigail_sprite.global_position)
 	
-	#Get all cardinal directions, sort by distance to abigail, least distance is the move 
+	#Get all cardinal directions, sort by distance to abigail, least distance is the move
 	var tile_choices = []
 	for i in range(4):
-		tile_choices.append([dist(cat_coor + Vector2i(dx[i], dy[i]), abigail_coor), i])
+		var target_tile = cat_coor + Vector2i(dx[i], dy[i])
+		var target_tile_type : TileData = tile_map.get_cell_tile_data(target_tile)
+		var env_target_tile_type : TileData = environment_map.get_cell_tile_data(target_tile)
+		var dist_to_abi = dist(target_tile, abigail_coor)
+		
+		# target tile is not walkable -> make distance to MXVAL
+		if (env_target_tile_type != null and not env_target_tile_type.get_custom_data("Walkable")) or not target_tile_type.get_custom_data("Walkable"):
+			dist_to_abi = MXVAL
+		tile_choices.append([dist_to_abi, i])
 	tile_choices.sort()
 	
-	
-	if tile_choices[0][0] <= dist_threshold:
+	if tile_choices[0][0] <= dist_threshold or tile_choices[0][0] == MXVAL:
 		return
 	#print(tile_choices)
 	
