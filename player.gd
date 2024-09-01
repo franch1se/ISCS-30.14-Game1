@@ -3,7 +3,8 @@ extends Node2D
 @onready var tile_map = $"../Background"
 @onready var env_map = $"../Background"
 @onready var sprite = $"Sprite"
-@onready var animation = $"Sprite/animation"
+#@onready var animation = $"Sprite/animation"
+@onready var animation = $"AnimatedSprite2D"
 
 var is_moving = false
 var on_ice = false
@@ -28,7 +29,7 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	if is_moving:
 		return
-
+	
 	if (Input.is_action_pressed("W") and (!on_ice and !on_conv)):
 		move(Vector2.UP)
 		current_dir = Vector2.UP
@@ -47,11 +48,11 @@ func _process(delta: float) -> void:
 		animation.play("walk_right")
 	
 	if on_ice:
-		if walkable == false:
+		if not walkable:
 			on_ice = false
 		move(current_dir)
 	if on_conv:
-		if walkable == false:
+		if not walkable:
 			on_conv = false
 		move(current_dir)
 
@@ -68,17 +69,14 @@ func move(dir: Vector2):
 	print(current, target)
 	
 	var tile_data: TileData = tile_map.get_cell_tile_data(target)
-	if env_map.get_cell_tile_data(target) != null:
-		var env_tiledata: TileData = env_map.get_cell_tile_data(target)
-		print(env_tiledata.get_custom_data("Walkable"))
-		if env_tiledata.get_custom_data("Walkable") == false:
-			walkable = false
-			return
-	if tile_data.get_custom_data("Walkable") == false:
+	var env_tiledata: TileData = env_map.get_cell_tile_data(target)
+	print(env_tiledata.get_custom_data("Walkable"))
+	
+	#Determine if walkable
+	walkable = true
+	if not env_tiledata.get_custom_data("Walkable") or not tile_data.get_custom_data("Walkable"):
 		walkable = false
-	else: 
-		walkable = true
-	if walkable == false:
+	if not walkable:
 		return
 	
 	#Move
@@ -100,7 +98,6 @@ func move(dir: Vector2):
 	elif tile_data.get_custom_data("Walkable") == false:
 		on_conv = false
 		on_ice = false
-		return
 	else: 
 		on_conv = false
 		on_ice = false

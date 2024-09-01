@@ -22,6 +22,10 @@ window/size/viewport_height=800
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="Practice"
+
 [input]
 
 W={
