@@ -49,7 +49,7 @@ func _process(delta):
 	
 	if tile_choices[0][0] <= dist_threshold:
 		return
-	print(tile_choices)
+	#print(tile_choices)
 	
 	var target_coor = cat_coor;
 	if tile_choices[0][1] == 0:

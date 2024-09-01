@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
-@onready var tile_map: TileMapLayer = $"../Background"
-@onready var abigail_sprite: AnimatedSprite2D = $abigail_sprite
+@onready var tile_map: TileMapLayer = $"../Background" # has ice, impassable, walkable
+@onready var abigail_sprite: AnimatedSprite2D = $abigail_sprite 
+@onready var conveyor_map: TileMapLayer = $"../Conveyor" # has conveyor
+@onready var environment_map: TileMapLayer = $"../Environment" # has null, walkable, impassable
 
 var is_moving = false
 var vertical_offset = Vector2(0, -16)
@@ -64,8 +66,11 @@ func move(direction: Vector2):
 	
 	var current_tile_type : TileData = tile_map.get_cell_tile_data(current_tile)
 	var target_tile_type : TileData = tile_map.get_cell_tile_data(target_tile)
-		
-	if not target_tile_type.get_custom_data("Walkable"):
+	var conv_current_tile_type : TileData = conveyor_map.get_cell_tile_data(current_tile)
+	var conv_target_tile_type : TileData = conveyor_map.get_cell_tile_data(target_tile)
+	var env_target_tile_type : TileData = environment_map.get_cell_tile_data(target_tile)
+	
+	if not target_tile_type.get_custom_data("Walkable") or (env_target_tile_type != null and not env_target_tile_type.get_custom_data("Walkable")):
 		#print("not walkable")
 		on_ice = false
 		on_conveyor = false
@@ -73,21 +78,21 @@ func move(direction: Vector2):
 	
 	#Check if on ice or on conveyer
 	if target_tile_type.get_custom_data("Ice"):
-		#print("ON ICE")
+		print("ON ICE")
 		on_ice = true
-	elif target_tile_type.get_custom_data("Conveyor"):
-		#print("ON CONVEYOR")
+	elif conv_target_tile_type != null and conv_target_tile_type.get_custom_data("Conveyor"):
+		print("ON CONVEYOR")
 		on_conveyor = true
-		if target_tile_type.get_custom_data("conv_dir") == "UP":
+		if conv_target_tile_type.get_custom_data("conv_dir") == "UP":
 			direction = Vector2.UP
-		elif target_tile_type.get_custom_data("conv_dir") == "DOWN":
+		elif conv_target_tile_type.get_custom_data("conv_dir") == "DOWN":
 			direction = Vector2.DOWN
-		elif target_tile_type.get_custom_data("conv_dir") == "LEFT":
+		elif conv_target_tile_type.get_custom_data("conv_dir") == "LEFT":
 			direction = Vector2.LEFT
-		elif target_tile_type.get_custom_data("conv_dir") == "RIGHT":
+		elif conv_target_tile_type.get_custom_data("conv_dir") == "RIGHT":
 			direction = Vector2.RIGHT
 	else:
-		#print("not ice convey")
+		print("not ice convey")
 		on_ice = false
 		on_conveyor = false
 		
@@ -97,7 +102,7 @@ func move(direction: Vector2):
 	
 	#Play sprite animation
 	cur_direction = direction
-	if current_tile_type.get_custom_data("Conveyor"):
+	if conv_current_tile_type != null and conv_current_tile_type.get_custom_data("Conveyor"):
 		abigail_sprite.play("rotating")
 	elif direction == Vector2.UP:
 		if current_tile_type.get_custom_data("Ice"):

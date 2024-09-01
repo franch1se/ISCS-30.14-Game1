@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://player.gd" id="4_cirjp"]
 [ext_resource type="Texture2D" uid="uid://b7oqva11502sw" path="res://assets/stardew assets/PC Computer - Stardew Valley - Abigail.png" id="5_ybumj"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vka1o"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xtab5"]
 texture = ExtResource("1_08hw0")
 0:0/0 = 0
 1:0/0 = 0
@@ -3467,7 +3467,7 @@ texture = ExtResource("1_08hw0")
 33:103/0 = 0
 34:103/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_afqif"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0fqku"]
 texture = ExtResource("2_3slng")
 0:0/0 = 0
 1:0/0 = 0
@@ -6877,7 +6877,7 @@ texture = ExtResource("2_3slng")
 33:103/0 = 0
 34:103/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxy4y"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oopot"]
 texture = ExtResource("3_lxy2m")
 0:0/animation_frame_0/duration = 1.0
 0:0/animation_frame_1/duration = 1.0
@@ -6913,9 +6913,9 @@ custom_data_layer_2/name = "Conveyor"
 custom_data_layer_2/type = 1
 custom_data_layer_3/name = "conv_dir"
 custom_data_layer_3/type = 4
-sources/0 = SubResource("TileSetAtlasSource_vka1o")
-sources/1 = SubResource("TileSetAtlasSource_afqif")
-sources/5 = SubResource("TileSetAtlasSource_sxy4y")
+sources/0 = SubResource("TileSetAtlasSource_xtab5")
+sources/1 = SubResource("TileSetAtlasSource_0fqku")
+sources/5 = SubResource("TileSetAtlasSource_oopot")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_nhlbv"]
 
