@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://dnsrv3f7xgajh"]
+[gd_scene load_steps=67 format=4 uid="uid://dnsrv3f7xgajh"]
 
 [ext_resource type="Texture2D" uid="uid://o7e3tq2d746u" path="res://assets/stardew assets/PC Computer - Stardew Valley - Outdoors Spring.png" id="1_4b77p"]
 [ext_resource type="Texture2D" uid="uid://ex8fv080xirk" path="res://assets/stardew assets/PC Computer - Stardew Valley - Outdoors Winter.png" id="2_8flkk"]
@@ -20732,6 +20732,9 @@ sources/1 = SubResource("TileSetAtlasSource_2grdw")
 sources/5 = SubResource("TileSetAtlasSource_1kuxr")
 sources/2 = SubResource("TileSetAtlasSource_pf801")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhftl"]
+size = Vector2(14, 27)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dp5kn"]
 atlas = ExtResource("4_fik3h")
 region = Rect2(32, 64, 16, 32)
@@ -20865,7 +20868,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"playing_flute",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -20882,7 +20885,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"rotating",
-"speed": 15.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -20931,7 +20934,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_down",
-"speed": 16.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -20948,7 +20951,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_left",
-"speed": 16.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -20965,7 +20968,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_right",
-"speed": 16.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -20982,8 +20985,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_up",
-"speed": 16.0
+"speed": 8.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffcra"]
+size = Vector2(15, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_li4wl"]
 atlas = ExtResource("6_d24ri")
@@ -20993,17 +20999,17 @@ region = Rect2(0, 224, 32, 32)
 atlas = ExtResource("6_d24ri")
 region = Rect2(32, 224, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wcoxs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfjkn"]
 atlas = ExtResource("6_d24ri")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kup8"]
 atlas = ExtResource("6_d24ri")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cfjkn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcoxs"]
 atlas = ExtResource("6_d24ri")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hyaj6"]
 atlas = ExtResource("6_d24ri")
@@ -21025,19 +21031,19 @@ region = Rect2(96, 96, 32, 32)
 atlas = ExtResource("6_d24ri")
 region = Rect2(64, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_npkfs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5ib0"]
 atlas = ExtResource("6_d24ri")
 region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tlg2a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi323"]
 atlas = ExtResource("6_d24ri")
 region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aintp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmobi"]
 atlas = ExtResource("6_d24ri")
 region = Rect2(96, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2tnsx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmdkj"]
 atlas = ExtResource("6_d24ri")
 region = Rect2(64, 32, 32, 32)
 
@@ -21072,20 +21078,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wcoxs")
+"texture": SubResource("AtlasTexture_cfjkn")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1kup8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cfjkn")
+"texture": SubResource("AtlasTexture_wcoxs")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hyaj6")
 }],
 "loop": true,
 "name": &"walk_down",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -21102,24 +21108,24 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_left",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_npkfs")
+"texture": SubResource("AtlasTexture_u5ib0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tlg2a")
+"texture": SubResource("AtlasTexture_bi323")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aintp")
+"texture": SubResource("AtlasTexture_pmobi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2tnsx")
+"texture": SubResource("AtlasTexture_fmdkj")
 }],
 "loop": true,
 "name": &"walk_right",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -21136,7 +21142,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_up",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Node2D" type="Node2D"]
@@ -21161,10 +21167,13 @@ tile_set = SubResource("TileSet_87ubj")
 script = ExtResource("5_2md0b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Abigail"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_xhftl")
+disabled = true
 
 [node name="abigail_sprite" type="AnimatedSprite2D" parent="Abigail"]
 sprite_frames = SubResource("SpriteFrames_yoxll")
-animation = &"playing_flute"
+animation = &"rotating"
 
 [node name="Camera2D" type="Camera2D" parent="Abigail/abigail_sprite"]
 position = Vector2(-8, 0)
@@ -21174,15 +21183,18 @@ zoom = Vector2(2, 2)
 script = ExtResource("5_14dr5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cat"]
+position = Vector2(-0.5, -24)
+shape = SubResource("RectangleShape2D_ffcra")
+disabled = true
 
 [node name="cat_sprite" type="AnimatedSprite2D" parent="Cat"]
 position = Vector2(-1, -29)
 sprite_frames = SubResource("SpriteFrames_qu0wn")
-animation = &"idle"
-frame_progress = 0.898558
+animation = &"walk_up"
+frame_progress = 0.510976
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_yhjqn")
-volume_db = -10.0
+volume_db = -5.0
 autoplay = true
-parameters/looping = false
+parameters/looping = true

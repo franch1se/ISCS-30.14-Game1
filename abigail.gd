@@ -22,10 +22,18 @@ var on_ice = false
 var on_conveyor = false
 var conv_direction = Vector2.DOWN
 var is_teleporting = false
+var anim_frames = {
+	"walk_down" : [0, 0.0],
+	"walk_left" : [0, 0.0],
+	"walk_right" : [0, 0.0],
+	"walk_up" : [0, 0.0],
+	"rotating" : [0, 0.0],
+}
 
 func _ready():
-	global_position = tile_map.map_to_local(Vector2i(0,0))
-	abigail_sprite.global_position = tile_map.map_to_local(Vector2i(0,0))
+	var starting = Vector2i(-7, -17)
+	global_position = tile_map.map_to_local(starting)
+	abigail_sprite.global_position = tile_map.map_to_local(starting)
 	abigail_sprite.play("idle_front")
 
 # Transition from current_tile to target_tile
@@ -35,14 +43,18 @@ func _physics_process(delta):
 	
 	if global_position == abigail_sprite.global_position:
 		is_moving = false
-		if cur_direction == Vector2.UP:
-			abigail_sprite.play("idle_back")
-		elif cur_direction == Vector2.LEFT:
-			abigail_sprite.play("idle_left")
-		elif cur_direction == Vector2.DOWN:
-			abigail_sprite.play("idle_front")
-		elif cur_direction == Vector2.RIGHT:
-			abigail_sprite.play("idle_right")
+		if abigail_sprite.animation in anim_frames:
+			anim_frames[abigail_sprite.animation][0] = abigail_sprite.get_frame()
+			anim_frames[abigail_sprite.animation][1] = abigail_sprite.get_frame_progress()
+		match cur_direction:
+			Vector2.UP:
+				abigail_sprite.play("idle_back")
+			Vector2.LEFT:
+				abigail_sprite.play("idle_left")
+			Vector2.DOWN:
+				abigail_sprite.play("idle_front")
+			Vector2.RIGHT:
+				abigail_sprite.play("idle_right")
 		return
 		
 	#print("From", sprite.global_position, "to", global_position)
@@ -128,26 +140,32 @@ func move(direction: Vector2):
 	cur_direction = direction
 	if conv_current_tile_type != null and conv_current_tile_type.get_custom_data("Conveyor"):
 		abigail_sprite.play("rotating")
+		abigail_sprite.set_frame_and_progress(anim_frames["rotating"][0], anim_frames["rotating"][1])
 	elif direction == Vector2.UP:
 		if current_tile_type.get_custom_data("Ice"):
 			abigail_sprite.play("sliding_up") 	
-		else: 
+		else:
 			abigail_sprite.play("walk_up")
+			abigail_sprite.set_frame_and_progress(anim_frames["walk_up"][0], anim_frames["walk_up"][1])
+
 	elif direction == Vector2.LEFT:
 		if current_tile_type.get_custom_data("Ice"):
 			abigail_sprite.play("sliding_left") 	
 		else: 
 			abigail_sprite.play("walk_left")
+			abigail_sprite.set_frame_and_progress(anim_frames["walk_left"][0], anim_frames["walk_left"][1])
 	elif direction == Vector2.DOWN:
 		if current_tile_type.get_custom_data("Ice"):
 			abigail_sprite.play("sliding_down") 	
 		else: 
 			abigail_sprite.play("walk_down")
+			abigail_sprite.set_frame_and_progress(anim_frames["walk_down"][0], anim_frames["walk_down"][1])
 	elif direction == Vector2.RIGHT:
 		if current_tile_type.get_custom_data("Ice"):
 			abigail_sprite.play("sliding_right") 	
 		else: 
 			abigail_sprite.play("walk_right")
+			abigail_sprite.set_frame_and_progress(anim_frames["walk_right"][0], anim_frames["walk_right"][1])
 		
 	# Move
 	is_moving = true
